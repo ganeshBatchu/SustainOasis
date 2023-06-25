@@ -7,6 +7,7 @@ import FriendListWidget from "scenes/widgets/FriendListWidget";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
 import UserWidget from "scenes/widgets/UserWidget";
+import background from "backgroundImage/background.png";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -26,12 +27,24 @@ const ProfilePage = () => {
   useEffect(() => {
     getUser(); 
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+  const myStyle={
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: 'repeat-y',
+    height:'500vh',
+    marginTop:'-70px',
+    fontSize:'50px',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+}; 
   if (!user) return null;
 
   return (
     <Box>
-      <Navbar />
+    <Navbar />
+    <Box p= "2rem"></Box>
+    <div style={myStyle}>
+    <Box p= "2rem"></Box>
+    <Box>
       <Box
         width="100%"
         padding="2rem 6%"
@@ -53,6 +66,8 @@ const ProfilePage = () => {
           <PostsWidget userId={userId} isProfile/>
         </Box>
       </Box>
+    </Box>
+    </div>
     </Box>
   );
 };
